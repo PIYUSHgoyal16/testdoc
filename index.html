@@ -1,0 +1,116 @@
+---
+# Copyright 2019 OpenPrinting
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+title: "Open Printing"
+layout: splash
+date: 2016-03-23T11:48:41-04:00
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.5"
+  overlay_image: /assets/images/rotation_pantone.jpg
+  actions:
+    - label: "Learn More"
+      url: "/about-us/"
+excerpt: "Making printing just work!"
+intro: 
+  - excerpt: 'OpenPrinting works on the development of printing technology for Linux and Unix-style operating systems. We collaborate with IEEE-ISTO Printer Working Group(PWG) for Internet Printing Protocol(IPP) projects.'
+feature_row:
+  - image_path: assets/images/gsoc.jpeg
+    alt: "GSoC - OpenPrinting"
+    title: "GSoC - OpenPrinting"
+    excerpt: "OpenPrinting has been participating in the GSoC programme under its umbrella organization The Linux Foundation."
+    url: "/gsoc/"
+    btn_label: "Read More"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/OpenPrintingBox.png
+    alt: "About Us"
+    title: "About Us"
+    excerpt: "Learn more about OpenPrinting, how it works, the people involved and the projects maintained by it"
+    url: "/about-us"
+    btn_label: "Read More"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/contribute.png
+    title: "Contribute"
+    excerpt: "Know how you can be part of an excellent community and help improve printing experience for millions of users"
+    url: "/contribute"
+    btn_label: "Read More"
+    btn_class: "btn--primary"
+  
+database-intro:
+  - excerpt: "OpenPrinting hosts a Printer Compatibility Database. It contains entries from both the Foomatic Package and the community."
+
+database:
+  - image_path: /assets/images/Configuration.png
+    alt: "Printer Compatibility Database"
+    title: "Printer Compatibility Database"
+    excerpt: "The OpenPrinting database contains a wealth of information about specific printers, along with extensive driver information, 
+    the drivers themselves, basic specifications, and an associated set of configuration tools."
+    url: "http://openprinting.org/database"
+    btn_label: "Read More"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/printer.png
+    alt: "Foomatic Printer Database"
+    title: "Printer Database"
+    excerpt: "OpenPrinting's Printer Database"
+    url: "https://openprinting.org/printers"
+    btn_label: "Browse"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/files.png
+    alt: "Foomatic Driver Database"
+    title: "Printer Driver Database"
+    excerpt: "OpenPrinting's Printer Driver Database"
+    url: "https://openprinting.org/drivers"
+    btn_label: "Browse"
+    btn_class: "btn--primary"
+
+---
+
+{% include feature_row id="intro" type="center" %}
+
+<div class = "container-fluid row" id= "news" >
+  <div class="feature__wrapper">
+      {% for post in site.posts limit:3 %}
+          <div class="col-lg-4">
+            <div class="post">
+              <div class="list__item">
+                <a href="{{post.url}}">
+                <h2 style="margin-top: 0px" class="archive__item-title">{{ post.title }} </h2>
+                </a>
+                {% if post.read_time %}
+                  <p class="page__meta">
+                    Author: <b>{{ post.author }}</b>
+                    Date: <b>{{post.date | date: '%B %d, %Y'}}</b>
+                  </p>
+                {% endif %}
+
+                {% if post.excerpt %}
+                  <p class="archive__item-excerpt" itemprop="description">
+                  {{ post.excerpt | markdownify | strip_html | truncate:160}}
+                  </p>
+                {% endif %}
+
+              </div>
+            </div>
+            <br>
+          </div>
+      {% endfor %}
+  </div>
+</div>
+
+{% include feature_row %}
+
+{% include feature_row id="database-intro" type="center" %}
+
+{% include feature_row id="database" %}
