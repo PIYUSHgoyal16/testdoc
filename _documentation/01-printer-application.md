@@ -24,9 +24,9 @@ The first release of CUPS was back in 1997. <sup><a href="https://openprinting.g
 
 **PPD files** describes the printer's capabilities and which filters to use to produce the data format needed by the printer.
 
-This format was probably adopted because in that time printing under Linux and Unix worked via **PostScript**. Applications sent jobs in PostScript and printing systems converted this into the printer's language if the printer did not understand PostScript, usually with **Ghostscript**. 
+This format was adopted because in that time printing under Linux and Unix worked via **PostScript**. Applications sent jobs in PostScript which could be understood by PostScript printers. It allowed users to support all PostScript printers directly.
 
-**CUPS** made the move from built-in printer drivers in Ghostscript to CUPS filters, with the help of the CUPS Raster device-independent print raster format. CUPS provides reserved directories to drop these **PPD files** and **filters** into, so adding a printer driver was rather easy.
+**CUPS** made the move from built-in printer drivers in Ghostscript to CUPS filters, with the help of the CUPS Raster device-independent print raster format.CUPS raster drivers used **PPD files** because it used **Ghostscript** or (on IRIX) **Impressario** (a version of Adobe's PostScript interpreter) to produce raster data for printing, and they could use embedded PostScript commands to control page size, color space, etc.  Since both PostScript and raster printers could then use PPD files, OpenPrinting adopted PPD as a common printer description format, which also got used for it's ESP Print Pro (GUI) software and then later macOS and GNOME/KDE. CUPS provides reserved directories to drop these **PPD files** and **filters** into, so adding a printer driver was rather easy.
 
 Nowadays applications send jobs in PDF and CUPS does the processing **PDF-centric**, already for 8 years, since the first release of cups-filters back in 2012. So PPD files did not really fit in the picture any more, and they also had their shortcomings, especially being rather unflexible in the possible types of user-settable options. Also the need to drop filters and PPDs into reserved directories of CUPS makes it difficult to provide CUPS and printer drivers in snadboxed packages, like **Snaps**.
 
