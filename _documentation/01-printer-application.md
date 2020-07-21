@@ -4,13 +4,13 @@ title: Printer Applications - A new way to print in Linux
 
 Ever wondered how does a Printer actually works? What are the different steps involved between the print command and the final output?
 
-The following document contains information about the history of printing and its evolution. It describes about Printer Application. What were the issues with the previous methodologies? How Printer Application helped in solving them? Why it has been refered as "Technology for Future"? At the end, it also contains roles of different entities including OpenPrinting, Manufacturers and the User.  
+The following document contains information about the history of printing and its evolution. It describes Printer Applications. What were the issues with the previous methodologies? How Printer Applications helped in solving them? Why it has been refered as "Technology for Future"? At the end, it also contains roles of different entities including OpenPrinting, Manufacturers and the User.  
 
 __Table of Contents__
 
 
 1. **[Brief History](#brief-history)**
-2. **[What is Printer Application?](#printer-application)**
+2. **[What is a Printer Application?](#printer-application)**
 3. **[Advantages of Printer Application](#advantages)**
 4. **[Roles and Responsiblities](#roles)**
 5. **[Resources](#resources)**
@@ -26,14 +26,14 @@ The first release of CUPS was back in 1997. <sup><a href="https://openprinting.g
 
 This format was adopted because in that time printing under Linux and Unix worked via **PostScript**. Applications sent jobs in PostScript which could be understood by PostScript printers. It allowed users to support all PostScript printers directly.
 
-**CUPS** made the move from built-in printer drivers in Ghostscript to CUPS filters, with the help of the CUPS Raster device-independent print raster format.CUPS raster drivers used **PPD files** because it used **Ghostscript** or (on IRIX) **Impressario** (a version of Adobe's PostScript interpreter) to produce raster data for printing, and they could use embedded PostScript commands to control page size, color space, etc.  Since both PostScript and raster printers could then use PPD files, OpenPrinting adopted PPD as a common printer description format, which also got used for it's ESP Print Pro (GUI) software and then later macOS and GNOME/KDE. CUPS provides reserved directories to drop these **PPD files** and **filters** into, so adding a printer driver was rather easy.
+**CUPS** made the move from built-in printer drivers in Ghostscript to CUPS filters, with the help of the CUPS Raster device-independent print raster format. CUPS raster drivers used **PPD files** because it used **Ghostscript** or (on IRIX) **Impressario** (a version of Adobe's PostScript interpreter) to produce raster data for printing, and they could use embedded PostScript commands to control page size, color space, etc.  Since both PostScript and raster printers could then use PPD files, Micheal Sweet adopted PPD as a common printer description format, which also got used for it's ESP Print Pro (GUI) software and then later macOS and GNOME/KDE. CUPS provides reserved directories to drop these **PPD files** and **filters** into, so adding a printer driver was rather easy.
 
 Nowadays applications send jobs in PDF and CUPS does the processing **PDF-centric**, already for 8 years, since the first release of cups-filters back in 2012. So PPD files did not really fit in the picture any more, and they also had their shortcomings, especially being rather unflexible in the possible types of user-settable options. Also the need to drop filters and PPDs into reserved directories of CUPS makes it difficult to provide CUPS and printer drivers in snadboxed packages, like **Snaps**.
 
-Already several years ago, mainly due to the advent of smartphones and the desire to also print from these devices, printers got equipped with **driverless IPP** printing functionality: AirPrint, IPP Everywhere, Mopria, Wi-Fi Direct Print. These standards are practically all the same, the printer advertises its presence, its network address, and basic capabilities via DNS-SD (aka BonJour, mDNS, zero-conf, implemented with Avahi in Linux), accepts communication and jobs from clients via **IPP (Internet Printing Protocol)**, from the Printer Working Group, http://www.pwg.org/, supplies complete capability info to clients via IPP and uses only standard Page Description Languages (PDLs) for jobs: PDF, Apple Raster, PWG Raster, PCLm.
+Already several years ago, mainly due to the advent of smartphones and the desire to also print from these devices, printers got equipped with **driverless IPP** printing functionality: AirPrint, IPP Everywhere, Mopria, Wi-Fi Direct Print. These standards are practically all the same, the printer advertises its presence, its network address, and basic capabilities via DNS-SD (aka BonJour, mDNS, zero-conf, implemented with Avahi in Linux), accepts communication and jobs from clients via **IPP (Internet Printing Protocol)**, from the Printer Working Group, <a href="http://www.pwg.org/">http://www.pwg.org/</a>a>, supplies complete capability info to clients via IPP and uses only standard Page Description Languages (PDLs) for jobs: PDF, Apple Raster, PWG Raster, PCLm.
 
 
-<h2 id="printer-application">What is Printer Application?</h2>
+<h2 id="printer-application">What is a Printer Application?</h2>
     
 A **Printer Application** is a daemon that detects the supported printers and advertises those printers on the localhost as an IPP Everywhere printer. Printer Applications are the recommended architecture for printer drivers.
 
